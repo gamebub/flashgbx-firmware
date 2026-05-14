@@ -1,0 +1,3 @@
+[submodule "external/FlashGBX_LK_Firmware"]
+	path = external/FlashGBX_LK_Firmware
+	url = git@github.com:Lesserkuma/FlashGBX_LK_Firmware.git
