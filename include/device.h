@@ -23,6 +23,8 @@
 #define GPIO_CART_OUT_CLR  *(volatile uint32_t*)(MMIO_BASE + 0x0318)
 #define GPIO_CART_IN       *(volatile uint32_t*)(MMIO_BASE + 0x0320)
 #define GPIO_CART_EN       *(volatile uint32_t*)(MMIO_BASE + 0x0380)
+// 0x1 when DMG/CGB cartridge detected, 0x0 otherwise
+#define GPIO_CART_SWITCH   *(volatile uint32_t*)(MMIO_BASE + 0x0384)
 
 #define GPIO_LINK_DIR      *(volatile uint32_t*)(MMIO_BASE + 0x0400)
 #define GPIO_LINK_OUT      *(volatile uint32_t*)(MMIO_BASE + 0x0410)
