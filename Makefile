@@ -5,7 +5,7 @@ OBJDUMP = riscv64-unknown-elf-objdump
 ARCH = rv32imc
 ABI = ilp32
 
-CFLAGS = -march=$(ARCH) -mabi=$(ABI) -ffreestanding -nostdlib -O3 -Wall -Iinclude -Iexternal/FlashGBX_LK_Firmware -DLK_DEVICE_HEADER=\"LK_Game_Bub.h\"
+CFLAGS = -march=$(ARCH) -mabi=$(ABI) -ffreestanding -nostdlib -O3 -Wall -Iinclude -Iexternal/FlashGBX_LK_Firmware -DLK_DEVICE_HEADER=\"LK_GameBub.h\"
 LDFLAGS = -T linker.ld -nostdlib -Wl,--no-warn-rwx-segments
 
 BUILD_DIR = build
