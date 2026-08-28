@@ -2,7 +2,7 @@
 	LK Firmware version L15
 	for Game Bub
 	Author: Lesserkuma (github.com/lesserkuma)
-	Last Modified: 2026-05-24T15:47:20+02:00
+	Last Modified: 2026-08-28T21:40:08+02:00
 */
 
 #ifndef _LK_GAME_BUB_H_
@@ -78,7 +78,7 @@ void send_data(uint8_t* data, uint32_t count);
 #define AUTO_POWEROFF_SUSPEND()				auto_off_timer_suspended = true
 #define TIMESTAMP_NOW()						get_timestamp_ms()
 
-#define RAW_PINS_DIR_OUT()					{ GPIO_CART_DIR = 0xFF; }
+#define RAW_PINS_DIR_OUT()					{ GPIO_CART_DIR = 0x1F; }
 #define RAW_PINS_DIR_IN()					{ GPIO_CART_DIR = 0x00; }
 
 #define PIN_AUDIO_DIR_OUT()					{ GPIO_CART_DIR_SET = (1 << 5); }
