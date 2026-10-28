@@ -1,13 +1,14 @@
 /*
-	LK Firmware version L15
+	LK Firmware version L16
 	for Game Bub
 	Author: Lesserkuma (github.com/lesserkuma)
-	Last Modified: 2026-08-28T21:40:08+02:00
+	Last Modified: 2026-10-15T23:19:57+02:00
 */
 
 #ifndef _LK_GAME_BUB_H_
 #define _LK_GAME_BUB_H_
 
+#include "LK.h"
 #include "device.h"
 
 #define HARDWARE_GAMEBUB
@@ -18,6 +19,8 @@
 #define LK_BOOTLOADER_RESET_SUPPORT			false
 #define LK_CART_PRESENCE_SWITCH_SUPPORT		false
 #define LK_CART_MODE_SWITCH_SUPPORT			true
+#define LK_DEVICE_SERIAL_SIZE				0
+#define LK_GET_DEVICE_SERIAL(data)			((void)(data))
 
 void debug_out(uint32_t id);
 
@@ -65,11 +68,12 @@ void send_data(uint8_t* data, uint32_t count);
 #define PIN_CLK_L()							GPIO_CART_OUT_CLR = (PIN_CLK)
 // #define PIN_CLK_H()							GPIO_PMOD_OUT = (1)
 // #define PIN_CLK_L()							GPIO_PMOD_OUT = (0)
+#define PIN_CLK_TOGGLE(num, freq_mhz)		{ (void)(freq_mhz); for (u32 i = 0; i < num; i++) { PIN_CLK_H(); PIN_CLK_L(); } }
 #define PIN_ADDR_H(pin)						GPIO_CART_OUT_SET = (1 << (pin))
 #define PIN_ADDR_L(pin)						GPIO_CART_OUT_CLR = (1 << (pin))
 
 #define CART_POWER_ON()						{ GPIO_CART_EN = 1; }
-#define CART_POWER_OFF()					{ GPIO_CART_EN = 0; }
+#define CART_POWER_OFF()					{ GPIO_CART_EN = 0; RAW_PINS_DIR_IN(); }
 #define ACTIVITY_LED_ON()					{ /* no led */ }
 #define ACTIVITY_LED_OFF()					{ /* no led */ }
 #define SET_VOLTAGE_3_3V()					{ /* no voltage control */ }
