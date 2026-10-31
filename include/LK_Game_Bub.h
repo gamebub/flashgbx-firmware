@@ -18,6 +18,8 @@
 #define LK_BOOTLOADER_RESET_SUPPORT			false
 #define LK_CART_PRESENCE_SWITCH_SUPPORT		false
 #define LK_CART_MODE_SWITCH_SUPPORT			true
+#define LK_DEVICE_SERIAL_SIZE				0
+#define LK_GET_DEVICE_SERIAL(data)			((void)(data))
 
 void debug_out(uint32_t id);
 
@@ -63,6 +65,7 @@ void send_data(uint8_t* data, uint32_t count);
 #define PIN_AUDIO_L()						GPIO_CART_OUT_CLR = (PIN_AUDIO)
 #define PIN_CLK_H()							GPIO_CART_OUT_SET = (PIN_CLK)
 #define PIN_CLK_L()							GPIO_CART_OUT_CLR = (PIN_CLK)
+#define PIN_CLK_TOGGLE(num, freq_mhz)		{ for (u32 i = 0; i < num; i++) { PIN_CLK_H(); PIN_CLK_L(); } }
 // #define PIN_CLK_H()							GPIO_PMOD_OUT = (1)
 // #define PIN_CLK_L()							GPIO_PMOD_OUT = (0)
 #define PIN_ADDR_H(pin)						GPIO_CART_OUT_SET = (1 << (pin))
